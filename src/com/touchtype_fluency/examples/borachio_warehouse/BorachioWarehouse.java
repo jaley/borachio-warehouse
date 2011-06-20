@@ -24,7 +24,11 @@ public class BorachioWarehouse extends TabActivity {
         tabHost.addTab(tabHost.newTabSpec("inventory")
                 .setIndicator("Inventory")
                 .setContent(R.id.listpage));
-                
+ 
+        tabHost.addTab(tabHost.newTabSpec("order")
+                .setIndicator("Order")
+                .setContent(R.id.orderpage));
+         
         mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mTestStrings);
         
         mAdapter.add("Test line 1");
@@ -32,5 +36,6 @@ public class BorachioWarehouse extends TabActivity {
         
         ListView list = (ListView) findViewById(R.id.inventory);
         list.setAdapter(mAdapter);
+        
     }
 }

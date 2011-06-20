@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+	<!-- Inventory Tab -->
 	<LinearLayout 
 		android:id="@+id/listpage"
     	android:orientation="vertical"
    		android:layout_width="match_parent" 
-    	android:layout_height="match_parent"
-    	android:paddingLeft="8dip"
-    	android:paddingRight="8dip">
+    	android:layout_height="match_parent">
 	
 		<RelativeLayout 
 			android:layout_width="fill_parent" 
@@ -35,7 +35,6 @@
 	              	android:layout_width="wrap_content"
 	              	android:layout_height="wrap_content"
 	              	android:layout_weight="3"
-	              	android:layout_below="@id/label"
 	              	android:hint="Product name" />
 	              	
 	    		<EditText 
@@ -43,7 +42,6 @@
 	              	android:layout_width="wrap_content" 
 	              	android:layout_height="wrap_content"
 	              	android:layout_weight="1"
-	              	android:layout_below="@id/label"
 	              	android:numeric="integer"
 	              	android:hint="Qty" />
 
@@ -70,6 +68,49 @@
 
 	</LinearLayout>
 	
-	
+	<!-- Order tab -->	
+	<RelativeLayout
+		android:id="@+id/orderpage"
+   		android:layout_width="match_parent" 
+    	android:layout_height="match_parent">
+    	
+    	<TextView
+       		android:id="@+id/orderlabel" 
+          	android:layout_width="fill_parent"
+          	android:layout_height="wrap_content"
+          	android:text="Place an Order" />
+   	
+    	<LinearLayout
+			android:id="@+id/orderfields"
+			android:layout_width="fill_parent" 
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/orderlabel"
+	        android:padding="5px" >
+	        
+	        <Spinner
+	        	android:id="@+id/orderspinner"
+	        	android:layout_width="wrap_content" 
+	        	android:layout_height="wrap_content"
+	        	android:layout_weight="3"/>
+	        	
+    		<EditText
+    			android:id="@+id/order_qty" 
+              	android:layout_width="wrap_content" 
+              	android:layout_height="wrap_content"
+              	android:layout_weight="1"
+              	android:numeric="integer"
+              	android:hint="Qty" />	        	
+    	</LinearLayout>
+    	
+	    <Button 
+	    	android:id="@+id/orderbutton" 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_below="@id/orderfields"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10px"
+            android:text="Order" />
+    	
+    </RelativeLayout>
 
 </FrameLayout>
