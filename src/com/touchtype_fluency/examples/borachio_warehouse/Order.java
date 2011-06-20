@@ -38,6 +38,11 @@ public class Order {
     }
     
     public boolean fill() {
+        if(mWarehouse.hasInventory(mProduct, mQuantity)) {
+            mWarehouse.remove(mProduct, mQuantity);
+            return true;
+        }
+        
         return false;
     }
 }
