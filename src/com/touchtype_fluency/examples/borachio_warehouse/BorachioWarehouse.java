@@ -1,18 +1,15 @@
 package com.touchtype_fluency.examples.borachio_warehouse;
 
-import java.util.ArrayList;
-
 import android.app.TabActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TabHost;
 
 public class BorachioWarehouse extends TabActivity {
     
-    private ArrayAdapter<String> mAdapter;
-    private ArrayList<String> mTestStrings = new ArrayList<String>();
+    private BaseAdapter mAdapter;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,11 +26,8 @@ public class BorachioWarehouse extends TabActivity {
                 .setIndicator("Order")
                 .setContent(R.id.orderpage));
          
-        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mTestStrings);
-        
-        mAdapter.add("Test line 1");
-        mAdapter.add("Test line 2");
-        
+        mAdapter = new BorachioWarehouseAdapter(this);
+                
         ListView list = (ListView) findViewById(R.id.inventory);
         list.setAdapter(mAdapter);
         
