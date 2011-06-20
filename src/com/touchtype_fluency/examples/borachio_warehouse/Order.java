@@ -35,5 +35,9 @@ public class Order {
 
     public void setQuantity(int quantity) {
         mQuantity = quantity;
-    }    
+    }
+    
+    public boolean fill() {
+        return false;
+    }
 }
