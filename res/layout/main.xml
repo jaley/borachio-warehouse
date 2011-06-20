@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+	<LinearLayout 
+		android:id="@+id/listpage"
+    	android:orientation="vertical"
+   		android:layout_width="match_parent" 
+    	android:layout_height="match_parent"
+    	android:paddingLeft="8dip"
+    	android:paddingRight="8dip">
+	
+		<RelativeLayout 
+			android:layout_width="fill_parent" 
+	        android:layout_height="wrap_content"
+ 	        android:padding="10px" >
+	        
+	        <TextView 
+	       		android:id="@+id/label" 
+              	android:layout_width="fill_parent"
+              	android:layout_height="wrap_content"
+              	android:text="Add new items to the Warehouse" />
+
+			<LinearLayout 
+				android:id="@+id/editors"
+				android:layout_width="fill_parent" 
+		        android:layout_height="wrap_content"
+				android:layout_below="@id/label"
+	 	        android:padding="5px" >
+
+	    		<EditText 
+	    			android:id="@+id/name_field" 
+	              	android:layout_width="wrap_content"
+	              	android:layout_height="wrap_content"
+	              	android:layout_weight="3"
+	              	android:layout_below="@id/label"
+	              	android:hint="Product name" />
+	              	
+	    		<EditText 
+	    			android:id="@+id/qty_field" 
+	              	android:layout_width="wrap_content" 
+	              	android:layout_height="wrap_content"
+	              	android:layout_weight="1"
+	              	android:layout_below="@id/label"
+	              	android:numeric="integer"
+	              	android:hint="Qty" />
+
+			</LinearLayout>
+              	  
+		    <Button 
+		    	android:id="@+id/addbutton" 
+	            android:layout_width="wrap_content" 
+	            android:layout_height="wrap_content" 
+	            android:layout_below="@id/editors"
+	            android:layout_alignParentRight="true"
+	            android:layout_marginLeft="10px"
+	            android:text="Add" />
+	            
+       	</RelativeLayout>
+
+		<ListView 
+			android:id="@+id/inventory"
+		    android:layout_width="match_parent" 
+		    android:layout_height="match_parent"
+		    android:layout_weight="1"
+		    android:drawSelectorOnTop="false"
+	        android:transcriptMode="normal" />
+
+	</LinearLayout>
+	
+	
+
+</FrameLayout>
