@@ -1,8 +1,5 @@
 package com.touchtype_fluency.examples.borachio_warehouse;
 
-import java.util.ArrayList;
-
-import android.content.Context;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,23 +12,20 @@ import android.widget.TextView;
  */
 public class BorachioWarehouseAdapter extends BaseAdapter {
 
-    private Context mContext;
-    ArrayList<Pair<String, Integer>> mData = new ArrayList<Pair<String, Integer>>();
+    private BorachioWarehouse mWarehouseActivity;
     
-    public BorachioWarehouseAdapter(Context c) {
-        mData.add(new Pair<String, Integer>("Talisker", 10));
-        mData.add(new Pair<String, Integer>("Laphroaig", 30));
-        mContext = c;
+    public BorachioWarehouseAdapter(BorachioWarehouse w) {
+        mWarehouseActivity = w;
     }
     
     @Override
     public int getCount() {
-        return mData.size();
+        return mWarehouseActivity.getWarehouse().getInventory().size();
     }
 
     @Override
     public Object getItem(int index) {
-        return mData.get(index);
+        return mWarehouseActivity.getWarehouse().getInventory().get(index);
     }
 
     @Override
@@ -45,7 +39,7 @@ public class BorachioWarehouseAdapter extends BaseAdapter {
         // Set up Android's list view component
         ViewHolder holder = null;
         if (convertView == null) {
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.list_item, null);            
+            convertView = LayoutInflater.from(mWarehouseActivity).inflate(R.layout.list_item, null);            
             
             holder = new ViewHolder();
             holder.mProduct = (TextView) convertView.findViewById(R.id.product_label);
@@ -58,7 +52,7 @@ public class BorachioWarehouseAdapter extends BaseAdapter {
         }
         
         // Now read the data and add it to the list view item
-        Pair<String, Integer> data = mData.get(index);
+        Pair<String, Integer> data = mWarehouseActivity.getWarehouse().getInventory().get(index);
         holder.mProduct.setText(data.first);
         holder.mQuantity.setText(data.second.toString());
         

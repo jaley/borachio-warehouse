@@ -54,6 +54,7 @@
 	            android:layout_below="@id/editors"
 	            android:layout_alignParentRight="true"
 	            android:layout_marginLeft="10px"
+	            android:onClick="onClick"
 	            android:text="Add" />
 	            
        	</RelativeLayout>
@@ -91,6 +92,7 @@
 	        	android:id="@+id/orderspinner"
 	        	android:layout_width="wrap_content" 
 	        	android:layout_height="wrap_content"
+	        	android:drawSelectorOnTop="true"
 	        	android:layout_weight="3"/>
 	        	
     		<EditText
@@ -109,6 +111,7 @@
             android:layout_below="@id/orderfields"
             android:layout_alignParentRight="true"
             android:layout_marginLeft="10px"
+            android:onClick="onClick"
             android:text="Order" />
     	
     </RelativeLayout>

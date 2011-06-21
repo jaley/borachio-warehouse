@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, BorachioWarehouse!</string>
     <string name="app_name">Borachio Warehouse</string>
+    <string name="spinner_prompt">Select a product</string>
 </resources>
