@@ -1,6 +1,6 @@
 package com.touchtype_fluency.examples.borachio_warehouse;
 
-import android.app.TabActivity;
+import roboguice.activity.RoboTabActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +12,15 @@ import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.Toast;
 
-public class BorachioWarehouse extends TabActivity {
+import com.google.inject.Inject;
+
+public class BorachioWarehouse extends RoboTabActivity {
+
+    // Dependencies injected by Guice.
+    @Inject     Warehouse mWarehouse;
     
     private BaseAdapter mListAdapter;
-    private ArrayAdapter mSpinnerAdapter;
-    private Warehouse mWarehouse = new WarehouseImpl();
+    private ArrayAdapter<String> mSpinnerAdapter;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
