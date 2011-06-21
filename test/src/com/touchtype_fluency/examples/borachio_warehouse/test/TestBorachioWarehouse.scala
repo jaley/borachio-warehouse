@@ -7,16 +7,30 @@ import android.test.suitebuilder.annotation._
 import com.borachio._
 import com.borachio.junit3.MockFactory
 
-import com.touchtype_fluency.examples.borachio_warehouse.{Order, Warehouse}
+import com.google.inject._
+import roboguice.test.RoboUnitTestCase
+
+import com.touchtype_fluency.examples.borachio_warehouse._
 
 class TestBorachioWarehouse extends TestCase with MockFactory {
   
+  var injector : Injector = _
   var mockWarehouse : Warehouse with Mock = _
 
 
   override def setUp {
     super.setUp
     mockWarehouse = mock[Warehouse]
+
+    injector = Guice.createInjector(new AbstractModule {
+      override def configure() {
+        // System Under Test is Order, so we use the real implementation
+        bind(classOf[Order]).to(classOf[OrderImpl])
+
+        // Order has a dependency on Warehouse, which we are mocking
+        bind(classOf[Warehouse]).toInstance(mockWarehouse)
+      }
+    })
   }
 
   @MediumTest
@@ -27,7 +41,9 @@ class TestBorachioWarehouse extends TestCase with MockFactory {
         mockWarehouse expects 'remove withArgs ("Talisker", 10) once;
       }
 
-      val o = new Order(mockWarehouse, "Talisker", 10)
+      val o = injector.getInstance(classOf[Order])
+      o.update("Talisker", 10)
+
       assertTrue(o.fill)
     }
   }
