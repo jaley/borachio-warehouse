@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import android.util.Pair;
 
+import com.google.inject.Singleton;
+
+@Singleton
 public class WarehouseImpl implements Warehouse {
 
     ArrayList<Pair<String, Integer>> mData = new ArrayList<Pair<String, Integer>>();

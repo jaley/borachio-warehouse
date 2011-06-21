@@ -13,6 +13,7 @@ import android.widget.TabHost;
 import android.widget.Toast;
 
 import com.google.inject.Inject;
+import com.google.inject.Injector;
 
 public class BorachioWarehouse extends RoboTabActivity {
 
@@ -76,7 +77,8 @@ public class BorachioWarehouse extends RoboTabActivity {
                 name = (String) ((Spinner) findViewById(R.id.orderspinner)).getSelectedItem();
                 qty = ((EditText) findViewById(R.id.order_qty)).getText().toString();
                 
-                Order o = new Order(mWarehouse, name, Integer.parseInt(qty));
+                Order o = ((BorachioWarehouseApplication) getApplication()).getInjector().getInstance(Order.class);
+                o.update(name, Integer.parseInt(qty));
                 if(o.fill()) {
                     Toast placed = Toast.makeText(this, "Order placed!", Toast.LENGTH_SHORT);
                     placed.show();
