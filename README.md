@@ -9,9 +9,24 @@ This example is a thoroughly pointless and unnecessary user interface for Martin
 Notes on Building
 -----------------
 
-The project has a selection of tags, which are numbered to go along with the tutorial. Each of these /should/ just build, with one less-than-ideal piece of house work. I've had to check in the `local.properties` file, against all advice, because the process for building a Scala project on Android required it. This means, in order to build you'll need to change the paths inside it to match your installation. 
+The project has a selection of tags, which are numbered to go along with the tutorial. Each of these /should/ just build, with one less-than-ideal piece of house work. I've had to check in the `local.properties` file, against all advice, because the process for building a Scala project on Android required that it is modified. This means, in order to build you'll need to change the paths inside it to match your installation. 
 
 You need to install the version of [Scala](http://www.scala-lang.org) that matches the Borachio version in test/libs. At the time of writing this is 2.9.0.1 - adjust the `local.properties` as mentioned above to reflect your installation. Also change the ProGuard and SDK paths to wherever you've installed the Android SDK. Otherwise, this is pretty much a straight forward Ant-based Android project.
+
+
+Tutorial
+--------
+
+This is a walkthrough of a project using Mocking and Dependency injection, built up in small stages. You can check out the code using the referenced tag if you want to play around with it at any stage.
+
+
+### Step 1 -- A crude, non-functional UI.
+
+This step was complete at the 1_EmptyUI tag:
+
+    $ git checkout 1_EmptyUI
+
+At this stage, you can quite simply import the project into Eclipse and hit the play button to try it out on your phone. There's not much to see - just a straight forward interface for adding inventory items and placing orders. All of it is completely non-functional. The remaining stages look to add a simple unit test, write the back end then migrate to Dependency Injection.
 
 
 
