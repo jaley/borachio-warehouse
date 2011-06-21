@@ -85,3 +85,68 @@ The code for this stage is tagged
 At TouchType, we now basically have a template for writing Unit Tests, which is demonstrated at this stage. A Unit Test will be a Scala class using JUnit, Borachio and RoboGuice. We use the JUnit `setUp()` to initialize an Injector with a fake RoboGuice module, set up specifically for the test. This module will bind the System Under Test to the real implementation (which we want to test, of course!) and all of its dependencies to mock objects created by Borachio, and bound with Guice's `toInstance()` method. Placing this in the setUp() method means you're starting with a clean canvas at every test, though with a large module you might find the test taking longer than you'd normally expect.
 
 
+Template test using Borachio and Guice
+--------------------------------------
+
+Here's that test template in Scala code, with comment annotations:
+
+    class MyUnitTest extends TestCase with MockFactory {
+
+      // You may want an injector in the unit tests, or alternatively
+      // use the injector in the set up method to create the SUT and
+      // hold that in a member instead.
+      var injector : Injector = _
+
+      // All dependent components should be mocked. Hold them in members
+      // so that you can set expectations in test cases.
+      var mockedDependency : DependencyInterface with Mock = _
+
+
+      // The setUp method is where we will create mocked dependencies and
+      // initialize the injector with a set of test bindings to be used in
+      // each test.
+      override def setUp {
+        super.setUp
+
+        // Initialize a mock object for each dependency
+        mockedDependency = mock[DependencyInterface]
+
+        // Now set up a Guice Injector, with a module we'll specifiy now
+        injector = Guice.createInjector(new AbstractModule {
+          override def configure() {
+            // System Under Test is bound to the implementation we want to test
+            bind(classOf[SUT]).to(classOf[SUTImpl])
+
+            // Dependent objects are bound to the mocks we just created
+            bind(classOf[DependencyInterface]).toInstance(mockedDependency)
+          }
+        })
+      }
+
+      // Usual JUnit tearDown() is available if needed
+      override def tearDown {
+        super.tearDown
+      }
+
+      
+      // Now we can write as many JUnit tests as we like, as per normal
+
+      @MediumTest
+      def testMyMockTest {
+
+        // Use the withExpectations function to get Borachio to check expectations!
+        withExpectations {
+
+          // Set some expectations on your mock objects
+          inSequence {
+            mockedDependency expects 'someFunction withArgs (1, 2) returning true once;
+          }
+
+          // Exercise the SUT with expectations set
+          SUT sut = injector.getInstance(classOf[SUT])
+          assertTrue(sut.doSomething())
+        }
+      }
+
+    }
+
