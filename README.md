@@ -1,11 +1,15 @@
 Android, Dependency Injection and Mock Testing
 ==============================================
 
-At [TouchType](http://www.touchtype-online.com) we've worked quite hard to set up a unit testing environment for Android that we're happy with, using [RoboGuice](http://code.google.com/p/roboguice) dependency injection and [Borachio](http://www.borachio.com) mock testing. [Paul Butcher](http://www.paulbutcher.com) has blogged about some of this work, and you can check out those blogs as a good starting point if you'd like a quick taster. Here you will find a worked example of using these tools to develop and test a really simple Android application.
+At [TouchType](http://www.touchtype-online.com) we've worked quite hard to set up a unit testing environment for Android that we're happy with, using [RoboGuice](http://code.google.com/p/roboguice) dependency injection and [Borachio](http://www.borachio.com) mock testing. [Paul Butcher](http://www.paulbutcher.com) has blogged about some of this work, and you can check out those blogs as a good starting point if you'd like a quick taster.
+
+Here you will find a worked example of using these tools to develop and test a really simple Android application. This is effectively the code behind the example in [this presentation, __Mocking and Unit Testing__](http://skillsmatter.com/podcast/home/mocking-and-testing/js-1931). You may find this a useful thing to watch.
 
 This example is a thoroughly pointless and unnecessary user interface for Martin Fowler's Warehouse example in the [Mocks Aren't Stubs](http://martinfowler.com/articles/mocksArentStubs.html) blog post. If you're not familiar with Mock testing, that blog is a great place to learn about it. We're using the [Borachio](http://www.borachio.com) Mock testing framework, written by Paul Butcher specifically for android. This framework is written in Scala, meaning we write unit tests in Scala - but don't worry, we use it to test Java code anyway, it's easy! :-)
 
 Dependency Injection is really useful to us for this development style. If you're not familiar with the design pattern, we recommend watching the video at the Google Guice project page, [here](http://code.google.com/p/google-guice/).
+
+
 
 Notes on Building
 -----------------
